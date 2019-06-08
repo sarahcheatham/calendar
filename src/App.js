@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Header from './components/Header';
+import Calendar from './components/Calendar';
 
  class App extends Component {
    constructor(){
@@ -16,7 +17,8 @@ import Header from './components/Header';
   render(){
     return (
       <div className="App">
-        <Header/>
+        <Header users={this.state.users}/>
+        <Calendar/>
       </div>
     );
   }
@@ -25,7 +27,7 @@ import Header from './components/Header';
 export default App;
 
 
-{/* <li> {users.map(user => {
+/* <li> {users.map(user => {
                   return user.username
                 })}
-          </li> */}
+          </li> */

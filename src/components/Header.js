@@ -1,8 +1,12 @@
 import React from 'react';
 
 const Header = (props) => {
+   const userName = props.users.map(user=> user.username);
     return (
-        <header>Calendar</header>
+        <div id="calhead">
+            <span className="icon">date_range</span>
+            <span>{userName}'s Calendar</span>
+        </div>
     )
 }
 
