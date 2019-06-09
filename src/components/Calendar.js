@@ -108,6 +108,7 @@ class Calendar extends React.Component {
     };
 
     render(){
+        console.log("props:", this.props)
         return (
             <div className="calendar">
                 {this.renderHeader()}
