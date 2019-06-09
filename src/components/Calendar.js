@@ -7,6 +7,7 @@ class Calendar extends React.Component {
         selectedDate: new Date()
     };
 
+    // renders the month and year header of the calendar
     renderHeader(){
         const dateFormat = "MMMM YYYY";
         return (
@@ -24,9 +25,9 @@ class Calendar extends React.Component {
                 </div>
             </div>
         )
-
     }
 
+    // renders the days of the week labels on the calendar
     renderDays(){
         const dateFormat = "dddd";
         const days = [];
@@ -40,11 +41,10 @@ class Calendar extends React.Component {
                 </div>
             );
         }
-
         return <div className="days row">{days}</div>;
-
     }
 
+    // renders the date boxes of the calendar
     renderCells(){
         const { currentMonth, selectedDate} = this.state;
         const monthStart = dateFns.startOfMonth(currentMonth);

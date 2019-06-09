@@ -5,7 +5,7 @@ import Calendar from './components/Calendar';
 
  class App extends Component {
    constructor(){
-     super();
+    super();
     this.state = {
       users: []
     }

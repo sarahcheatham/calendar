@@ -6,7 +6,7 @@ const Header = (props) => {
         <header id="calhead">
             <span>{userName}'s Calendar</span>
         </header>
-    )
+    );
 }
 
 export default Header;
