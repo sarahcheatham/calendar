@@ -16,19 +16,21 @@ import fakeData from './api/calendar.json';
       selectedDate: ""
     }
     //uncomment when working with SQL database
-    // fetch('http://localhost:3000')
-    // .then(response => response.json())
-    // .then(users => this.setState({users: users.users}))
-    // .catch(error => console.log(error));
+    fetch('http://localhost:3000')
+    .then(response => response.json())
+    .then(users => this.setState({users: users.users}))
+    .catch(error => console.log(error));
   }
 
   componentDidMount(){
     this.setState({ dummieUsers: fakeData.users, fakePosts: fakeData.posts})
   }
+
   selectDate = date => {
     console.log("DATE:", date.selectedDate)
     this.setState({selectedDate: date.selectedDate})
   }
+  
   render(){
     return (
       <div className="App">
