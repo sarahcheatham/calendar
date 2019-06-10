@@ -2,7 +2,8 @@
 .App{
   display: grid;
   grid-template-columns: 70% 30%;
-  background: var(--light-blue)
+  background: var(--warm-white);
+  height: 100vh;
 }
 
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
@@ -30,16 +31,11 @@
 /* VARIABLES */
 
 :root {
-  
+  --warm-white: #F2F2F0;
   --main-color: #15586A;
-  /* --main-color: #1a8fff; */
-  /* --text-color: #777; */
-  /* --text-color: #558FA9; */
   --text-color: #313639;
-  /* --text-color-light: #ccc; */
   --text-color-light: #B1B4BB;
   --border-color: #eee;
-  /* --bg-color: #f9f9f9; */
   --bg-color: #E8E9EB;
   --neutral-color: #fff;
   --other-color: #EE5553;
@@ -48,10 +44,9 @@
   --post-it: #F9F6EF;
   --pink-color: #F9F1EF;
   --light-blue: #E5EBEF;
-  /* margin-top: 5%; */
-  /* --neutral-color: #F7F7F7; */
+  --navy: #092930;
+  height: 100vh;
 }
-
 
 /* GENERAL */
 
@@ -64,35 +59,31 @@ body {
   font-family: museo-sans-rounded, sans-serif;
   font-style: normal;
   font-weight: 100;
-  /* font-family: 'Open Sans', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif; */
-  /* font-weight: 300; */
   font-size: 1em;
   line-height: 1.5;
   color: var(--text-color);
-  /* background: var(--bg-color); */
   background: var(--neutral-color);
   position: relative;
 }
 
 header {
   display: block;
-  /* width: 100%; */
   width: 100%;
   padding: 3% 0%;
-  /* padding: 1.75em 0; */
   border-bottom: 1px solid var(--border-color);
   background: var(--neutral-color);
+  color: var(--navy);
   font-family: proxima-nova, sans-serif;
   font-style: normal;
   font-weight: 300;
 }
 
+/* changes the very top header */
 #calhead {
   grid-column: 1 / 2;
   font-size: 175%;
   text-align: center;
   color: var(--black-color);
-  /* color: var(--main-color); */
   line-height: 1;
   margin-bottom: 0%;
 }
@@ -152,19 +143,13 @@ main {
   display: block;
   position: relative;
   width: 100%;
-  /* background: var(--neutral-color); */
   background: var(--pink-color);
-  /* border: 1px solid var(--border-color); */
   grid-column: 1 / 2;
 }
 
 /* changes the month year at the top of the calendar */
 .calendar .header {
   text-transform: uppercase;
-  /* font-weight: 700; */
-  /* font-family: proxima-nova, sans-serif;
-  font-style: normal;
-  font-weight: 400; */
   font-family: museo-sans-rounded, sans-serif;
   font-style: normal;
   font-weight: 500;
@@ -198,9 +183,7 @@ main {
   font-family: museo-sans-rounded, sans-serif;
   font-style: normal;
   font-weight: 300;
-  /* font-weight: 400; */
-  color: var(--text-color-light);
-  /* color: var(--coral-cloud); */
+  color: var(--main-color);
   background: var(--post-it);
   font-size: 70%;
   padding: .75em 0;
@@ -224,7 +207,7 @@ main {
 
 .calendar .body .selected {
   border-left: 10px solid transparent;
-  border-image: linear-gradient(45deg, #1a8fff 0%,#53cbf1 40%);
+  border-image: linear-gradient(45deg, #ECAC9B 0%, #FFFCF9 40%);
   border-image-slice: 1;
 }
 
@@ -246,13 +229,9 @@ main {
   line-height: 1;
   top: .75em;
   right: .75em;
-  /* font-weight: 700; */
   font-family: museo-sans-rounded, sans-serif;
   font-style: normal;
   font-weight: 500;
-  /* font-family: proxima-nova-condensed, sans-serif;
-  font-style: normal;
-  font-weight: 600; */
 }
 
 .calendar .body .disabled {
@@ -281,10 +260,8 @@ main {
 
 .calendar .body .col {
   flex-grow: 0;
-  /* flex-basis: calc(70%/7); */
   flex-basis: calc(100%/7);
   width: calc(100%/7);
-  /* width: calc(70%/7); */
 }
 
 /* Form Component */
@@ -292,15 +269,13 @@ main {
   grid-column: 2 / 3;
   padding-left: 5%;
   padding-right: 5%;
-  background: var(--light-blue)
-  /* display: flex; */
-  /* flex-direction: column; */
+  background: var(--warm-white);
 }
+
 #form{
   display: flex;
   flex-direction: column;
   padding-right: 5%;
-
 }
 
 .formInput{
@@ -318,6 +293,9 @@ main {
   margin-bottom: 5%;
 }
 
-/* #formHeader{
-  
-} */
+#formHeader{
+  font-family: proxima-nova, sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 20px;
+}
