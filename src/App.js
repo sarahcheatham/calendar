@@ -12,7 +12,8 @@ import fakeData from './api/calendar.json';
       users: [],
       posts: [],
       dummieUsers: [],
-      fakePosts: []
+      fakePosts: [],
+      selectedDate: ""
     }
     //uncomment when working with SQL database
     // fetch('http://localhost:3000')
@@ -24,12 +25,16 @@ import fakeData from './api/calendar.json';
   componentDidMount(){
     this.setState({ dummieUsers: fakeData.users, fakePosts: fakeData.posts})
   }
+  selectDate = date => {
+    console.log("DATE:", date.selectedDate)
+    this.setState({selectedDate: date.selectedDate})
+  }
   render(){
     return (
       <div className="App">
         <Header users={this.state.users} dummieUsers={this.state.dummieUsers}/>
-        <Calendar fakePosts={this.state.fakePosts}/>
-        <Form/>
+        <Calendar fakePosts={this.state.fakePosts} onDateSelect={this.selectDate}/>
+        <Form date={this.state.selectedDate}/>
       </div>
     );
   }
