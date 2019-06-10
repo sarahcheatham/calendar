@@ -1,0 +1,20 @@
+{
+    "users": [
+        {
+            "iduser": 1,
+            "username": "Sarah",
+            "email": "sarah.cheatham14@gmail.com",
+            "password": "pizza",
+            "calendar_post": "hello"
+        }
+    ],
+    "posts" : [
+        {
+            "userId": 1,
+            "date": "June 9, 2019",
+            "time": "3:00pm - 6:00pm",
+            "location": "North Campus",
+            "desc": "Sunday Study Group"
+        }
+    ]
+}
