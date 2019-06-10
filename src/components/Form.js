@@ -1,4 +1,5 @@
 import React from 'react';
+import Validation from 'react-validation';
 import FormHeader from './FormHeader';
 
 class Form extends React.Component{
@@ -21,7 +22,13 @@ class Form extends React.Component{
 
     handleFormSubmit = e => {
         e.preventDefault();
-        console.log("e", e.target)
+        const data = {
+            date: this.props.date,
+            time: this.state.time,
+            location: this.state.location,
+            desc: this.state.desc
+        }
+        console.log("data:", data)
     }
     renderForm(){
         return (
