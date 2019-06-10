@@ -2,6 +2,7 @@
 .App{
   display: grid;
   grid-template-columns: 70% 30%;
+  background: var(--light-blue)
 }
 
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
@@ -44,7 +45,9 @@
   --other-color: #EE5553;
   --black-color: #00272C;
   --coral-cloud: #E5AEA1;
-  --post-it: #F9F9ED;
+  --post-it: #F9F6EF;
+  --pink-color: #F9F1EF;
+  --light-blue: #E5EBEF;
   /* margin-top: 5%; */
   /* --neutral-color: #F7F7F7; */
 }
@@ -66,8 +69,8 @@ body {
   font-size: 1em;
   line-height: 1.5;
   color: var(--text-color);
-  background: var(--bg-color);
-  /* background: var(--post-it); */
+  /* background: var(--bg-color); */
+  background: var(--neutral-color);
   position: relative;
 }
 
@@ -149,8 +152,9 @@ main {
   display: block;
   position: relative;
   width: 100%;
-  background: var(--neutral-color);
-  border: 1px solid var(--border-color);
+  /* background: var(--neutral-color); */
+  background: var(--pink-color);
+  /* border: 1px solid var(--border-color); */
   grid-column: 1 / 2;
 }
 
@@ -197,6 +201,7 @@ main {
   /* font-weight: 400; */
   color: var(--text-color-light);
   /* color: var(--coral-cloud); */
+  background: var(--post-it);
   font-size: 70%;
   padding: .75em 0;
   border-bottom: 1px solid var(--border-color);
@@ -285,8 +290,9 @@ main {
 /* Form Component */
 #formContainer{
   grid-column: 2 / 3;
-  margin-left: 5%;
-  margin-right: 5%;
+  padding-left: 5%;
+  padding-right: 5%;
+  background: var(--light-blue)
   /* display: flex; */
   /* flex-direction: column; */
 }
@@ -294,6 +300,7 @@ main {
   display: flex;
   flex-direction: column;
   padding-right: 5%;
+
 }
 
 .formInput{
