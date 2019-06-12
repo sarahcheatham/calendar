@@ -1,11 +1,7 @@
 import React from 'react';
 // import Validation from 'react-validation';
 import FormHeader from './FormHeader';
-<<<<<<< HEAD
-//comment
-=======
 import dateFns from 'date-fns';
->>>>>>> ef4c692914434a09991ec650fe7308f032ca9727
 
 class Form extends React.Component{
     state = {
