@@ -11,19 +11,29 @@ import fakeData from './api/calendar.json';
     this.state = {
       users: [],
       posts: [],
-      dummieUsers: [],
-      fakePosts: [],
+      fakeData: [],
       selectedDate: ""
     }
     //uncomment when working with SQL database
-    fetch('http://localhost:3000')
-    .then(response => response.json())
-    .then(users => this.setState({users: users.users}))
-    .catch(error => console.log(error));
+    // fetch('/api/users')
+    // .then(response => response.json())
+    // .then(users => this.setState({users: users.users}))
+    // .catch(error => console.log(error));
   }
 
   componentDidMount(){
-    this.setState({ dummieUsers: fakeData.users, fakePosts: fakeData.posts})
+    fetch('http://localhost:3000/api/users')
+    .then(response => response.json())
+    .then(users => this.setState({ users }))
+    .catch(error => console.log(error));
+
+    fetch('http://localhost:3000/api/calendar')
+    .then(response => response.json())
+    .then(posts => this.setState({ posts }))
+    .catch(error => console.log(error));
+
+    this.setState({ fakeData })
+    // this.setState({ dummieUsers: fakeData.users, fakePosts: fakeData.posts})
   }
 
   selectDate = date => {
@@ -34,8 +44,8 @@ import fakeData from './api/calendar.json';
   render(){
     return (
       <div className="App">
-        <Header users={this.state.users} dummieUsers={this.state.dummieUsers}/>
-        <Calendar fakePosts={this.state.fakePosts} onDateSelect={this.selectDate}/>
+        <Header users={this.state.users} fakeData={this.state.fakeData}/>
+        <Calendar fakeData={this.state.fakeData} onDateSelect={this.selectDate}/>
         <Form date={this.state.selectedDate}/>
       </div>
     );
