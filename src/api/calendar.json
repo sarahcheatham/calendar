@@ -1,20 +1,77 @@
-{
-    "users": [
-        {
-            "iduser": 1,
-            "username": "Sarah",
-            "email": "sarah.cheatham14@gmail.com",
-            "password": "pizza",
-            "calendar_post": "hello"
+[
+    {
+        "id": 1,
+        "date": "2019-06-10",
+        "time": "12:30pm - 1:30pm",
+        "location": "North Campus",
+        "description": "Tutoring Michael Express",
+        "userId": 1,
+        "user": {
+            "id": 1,
+            "firstName": "Sarah",
+            "lastName": "Cheatham",
+            "userName": "sarah.cheatham14@gmail.com",
+            "password": "pizza"
         }
-    ],
-    "posts" : [
-        {
-            "userId": 1,
-            "date": "June 9, 2019",
-            "time": "3:00pm - 6:00pm",
-            "location": "North Campus",
-            "desc": "Sunday Study Group"
+    },
+    {
+        "id": 2,
+        "date": "2019-06-11",
+        "time": "11:00am - 12:00pm",
+        "location": "Virtual",
+        "description": "Tutoring Gina",
+        "userId": 1,
+        "user": {
+            "id": 1,
+            "firstName": "Sarah",
+            "lastName": "Cheatham",
+            "userName": "sarah.cheatham14@gmail.com",
+            "password": "pizza"
         }
-    ]
-}
+    },
+    {
+        "id": 3,
+        "date": "2019-06-12",
+        "time": "9:00am - 10:00am",
+        "location": "North Campus",
+        "description": "Tutoring Jay",
+        "userId": 1,
+        "user": {
+            "id": 1,
+            "firstName": "Sarah",
+            "lastName": "Cheatham",
+            "userName": "sarah.cheatham14@gmail.com",
+            "password": "pizza"
+        }
+    },
+    {
+        "id": 4,
+        "date": "2019-06-12",
+        "time": "11:00am - 12:00pm",
+        "location": "North Campus",
+        "description": "Tutoring Kyle",
+        "userId": 1,
+        "user": {
+            "id": 1,
+            "firstName": "Sarah",
+            "lastName": "Cheatham",
+            "userName": "sarah.cheatham14@gmail.com",
+            "password": "pizza"
+        }
+    },
+    {
+        "id": 5,
+        "date": "2019-06-12",
+        "time": "12:00pm - 1:00pm",
+        "location": "North Campus",
+        "description": "Tutoring Vincent",
+        "userId": 1,
+        "user": {
+            "id": 1,
+            "firstName": "Sarah",
+            "lastName": "Cheatham",
+            "userName": "sarah.cheatham14@gmail.com",
+            "password": "pizza"
+        }
+    }
+]
