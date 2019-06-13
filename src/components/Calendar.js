@@ -47,20 +47,7 @@ class Calendar extends React.Component {
     // renders the date boxes of the calendar
     renderCells(){
         const format = "ddd MMM D YYYY";
-        // const sDate = this.state.selectedDate.toString();
-        // const sDateCopy = sDate.slice(0, format.length +1);
-        // console.log("sDateCopy:", sDateCopy)
-        // dateFns.format(new Date(2014, 1, 11), 'MM/DD/YYYY')
-        //=> '02/11/2014'
-      
-        const date = this.props.fakeData.map(activity =>{
-            const activityDate = dateFns.format(activity.date, format)
-            return activityDate
-        });
-        // const correctDate = dateFns.format(date);
-        // console.log("correctDate:", correctDate)
-
-        const { currentMonth, selectedDate} = this.state;
+        const { currentMonth, selectedDate } = this.state;
         const monthStart = dateFns.startOfMonth(currentMonth);
         const monthEnd = dateFns.endOfMonth(monthStart);
         const startDate = dateFns.startOfWeek(monthStart);
@@ -72,21 +59,14 @@ class Calendar extends React.Component {
         let days = [];
         let day = startDate;
         let formattedDate = "";
-
+        const calendarEvents = this.props.fakeData.map(activity => dateFns.format(activity.date, format))
+        console.log("calendarEvents:", calendarEvents)
         while(day <= endDate){
             for(let i = 0; i < 7; i++){
                 formattedDate = dateFns.format(day, dateFormat);
                 const cloneDay = day;
                 const formattedDay = day.toString().slice(0, format.length + 1);
-                // console.log("formattedDay:", formattedDay)
-                const showActivity = date.map(day => {
-                    if(day == formattedDay){
-                       const theActivity = this.props.fakeData.map(activity => {
-                           const desc = activity.description;
-                           return desc
-                       })
-                    }
-                })
+                console.log("calendarEvents[j]:", calendarEvents)
 
                 days.push(
                     <div
