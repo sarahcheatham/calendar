@@ -46,7 +46,7 @@ class Calendar extends React.Component {
 
     // renders the date boxes of the calendar
     renderCells(){
-        const format = "ddd MMM D YYYY";
+        const format = "ddd MMM DD YYYY";
         const { currentMonth, selectedDate } = this.state;
         const monthStart = dateFns.startOfMonth(currentMonth);
         const monthEnd = dateFns.endOfMonth(monthStart);
@@ -59,15 +59,37 @@ class Calendar extends React.Component {
         let days = [];
         let day = startDate;
         let formattedDate = "";
-        const calendarEvents = this.props.fakeData.map(activity => dateFns.format(activity.date, format))
-        console.log("calendarEvents:", calendarEvents)
+        const calendarDays = dateFns.eachDay(
+            new Date(startDate),
+            new Date(endDate)
+        )
+        // const location = this.props.fakeData.map(obj => obj.location);
+        // const description = this.props.fakeData.map(obj => obj.description);
+        // const date = this.props.fakeData.map(obj => dateFns.format(obj.date, format))
+        let activity = "";
+        for(let i = 0; i< calendarDays.length; i++){
+            const calendarDay = dateFns.format(calendarDays[i], format);
+            // console.log("calendarDay:", calendarDay)
+                this.props.fakeData.map(obj => {
+                const date = dateFns.format(obj.date, format)
+                const location = obj.location;
+                const description = obj.description;
+                if(date === calendarDay){
+                    activity =  { location, description };
+                    return activity
+                }
+            })
+        }
+        const location = activity.location;
+        const description = activity.description;
+        
+    
         while(day <= endDate){
             for(let i = 0; i < 7; i++){
                 formattedDate = dateFns.format(day, dateFormat);
                 const cloneDay = day;
-                const formattedDay = day.toString().slice(0, format.length + 1);
-                console.log("calendarEvents[j]:", calendarEvents)
-
+                // const formattedDay = day.toString().slice(0, format.length +1);
+                // console.log(formattedDay,  date[i])
                 days.push(
                     <div
                         className={`col cell ${
@@ -80,7 +102,7 @@ class Calendar extends React.Component {
                     >
                         <span className="number">{formattedDate}</span>
                         <span className="bg">{formattedDate}</span>
-                        <span>Activity</span>
+                        <span>{location}{description}</span>
                     </div>
                 );
                 day = dateFns.addDays(day, 1);
