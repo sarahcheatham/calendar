@@ -7,7 +7,7 @@ class Calendar extends React.Component {
         selectedDate: new Date(),
         events: []
     };
-    
+
     renderHeader(){
         const dateFormat = "MMMM YYYY";
         return (
@@ -59,7 +59,7 @@ class Calendar extends React.Component {
 
     renderActivity(activity, index){
         const format = "ddd MMM DD YYYY";
-        const { currentMonth, selectedDate } = this.state;
+        const { currentMonth } = this.state;
         const monthStart = dateFns.startOfMonth(currentMonth);
         const monthEnd = dateFns.endOfMonth(monthStart);
         const startDate = dateFns.startOfWeek(monthStart);
@@ -80,7 +80,6 @@ class Calendar extends React.Component {
 
         for(let i = 0; i < calendarDays.length; i++){
             if(activity.date === calendarDays[i]){
-                // console.log(calendarDays[i])
                 location = activity.location;
                 time = activity.time;
                 description = activity.description;
@@ -104,16 +103,7 @@ class Calendar extends React.Component {
         const startDate = dateFns.startOfWeek(monthStart);
         const endDate = dateFns.endOfWeek(monthEnd);
 
-        const unformattedDays = dateFns.eachDay(
-            new Date(startDate),
-            new Date(endDate)
-        )
-        const calendarDays = unformattedDays.map(day => {
-            return dateFns.format(day, format)
-        })
-
         const events = this.formatEvents();
-        // console.log("calendarDays:", calendarDays)
         
         const dateFormat = "D";
         const rows = [];
@@ -138,14 +128,12 @@ class Calendar extends React.Component {
                     >
                         <span className="number">{formattedDate}</span>
                         <span className="bg">{formattedDate}</span>
-                        {/* {this.renderActivity(activity)} */}
                         {events.map((event, index)=> {
                             if(dateFns.format(cloneDay.toString(), format) === event.date){
                                 return this.renderActivity(event, index)
                             }
                             return ""
-                            })
-                        }
+                        })}
                     </div>
                 );
                 day = dateFns.addDays(day, 1);

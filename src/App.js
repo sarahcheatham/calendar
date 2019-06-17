@@ -33,11 +33,9 @@ import fakeData from './api/calendar.json';
     // .catch(error => console.log(error));
 
     this.setState({ fakeData })
-    // this.setState({ dummieUsers: fakeData.users, fakePosts: fakeData.posts})
   }
 
   selectDate = date => {
-    console.log("DATE:", date.selectedDate)
     this.setState({selectedDate: date.selectedDate})
   }
   
@@ -55,7 +53,3 @@ import fakeData from './api/calendar.json';
 export default App;
 
 
-/* <li> {users.map(user => {
-                  return user.username
-                })}
-          </li> */

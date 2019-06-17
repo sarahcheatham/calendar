@@ -1,12 +1,11 @@
 import React from 'react';
 // import Validation from 'react-validation';
 import FormHeader from './FormHeader';
-import dateFns from 'date-fns';
+// import dateFns from 'date-fns';
 
 class Form extends React.Component{
     state = {
         userId: "",
-        // date: "",
         date: new Date(),
         time: "",
         location: "",
