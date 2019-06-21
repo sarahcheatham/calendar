@@ -22,22 +22,20 @@ import fakeData from './api/calendar.json';
   }
 
   componentDidMount(){
-    fetch('http://localhost:3000/api/users')
-    .then(response => response.json())
-    .then(users => this.setState({ users }))
-    .catch(error => console.log(error));
+    // fetch('http://localhost:3000/api/users')
+    // .then(response => response.json())
+    // .then(users => this.setState({ users }))
+    // .catch(error => console.log(error));
 
-    fetch('http://localhost:3000/api/calendar')
-    .then(response => response.json())
-    .then(posts => this.setState({ posts }))
-    .catch(error => console.log(error));
+    // fetch('http://localhost:3000/api/calendar')
+    // .then(response => response.json())
+    // .then(posts => this.setState({ posts }))
+    // .catch(error => console.log(error));
 
     this.setState({ fakeData })
-    // this.setState({ dummieUsers: fakeData.users, fakePosts: fakeData.posts})
   }
 
   selectDate = date => {
-    console.log("DATE:", date.selectedDate)
     this.setState({selectedDate: date.selectedDate})
   }
   
@@ -55,7 +53,3 @@ import fakeData from './api/calendar.json';
 export default App;
 
 
-/* <li> {users.map(user => {
-                  return user.username
-                })}
-          </li> */

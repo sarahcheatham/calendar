@@ -11,7 +11,7 @@ const Header = (props) => {
     // uncomment when working with SQL database
     // const userName = props.users.map(user => user.firstName);
     return (
-        <header id="calhead">
+        <header id="user-calendar-header">
             <span>{userName}'s Calendar</span>
         </header>
     );

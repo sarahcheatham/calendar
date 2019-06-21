@@ -4,10 +4,10 @@ import dateFns from 'date-fns';
 class Calendar extends React.Component {
     state = {
         currentMonth: new Date(),
-        selectedDate: new Date()
+        selectedDate: new Date(),
+        events: []
     };
 
-    // renders the month and year header of the calendar
     renderHeader(){
         const dateFormat = "MMMM YYYY";
         return (
@@ -44,13 +44,66 @@ class Calendar extends React.Component {
         return <div className="days row">{days}</div>;
     }
 
-    // renders the date boxes of the calendar
-    renderCells(){
-        const { currentMonth, selectedDate} = this.state;
+    formatEvents(){
+        const format = "ddd MMM DD YYYY";
+        const events = this.props.fakeData.map(item => {
+            const date = dateFns.format(item.date, format)
+            const id = item.id;
+            const location = item.location;
+            const time = item.time;
+            const description = item.description
+            return {id, date, time, location, description}
+        });
+        return events
+    }
+
+    renderActivity(activity, index){
+        const format = "ddd MMM DD YYYY";
+        const { currentMonth } = this.state;
         const monthStart = dateFns.startOfMonth(currentMonth);
         const monthEnd = dateFns.endOfMonth(monthStart);
         const startDate = dateFns.startOfWeek(monthStart);
         const endDate = dateFns.endOfWeek(monthEnd);
+
+        const unformattedDays = dateFns.eachDay(
+            new Date(startDate),
+            new Date(endDate)
+        )
+
+        const calendarDays = unformattedDays.map(day => {
+            return dateFns.format(day, format)
+        })
+
+        let location = "";
+        let time = "";
+        let description = "";
+
+        for(let i = 0; i < calendarDays.length; i++){
+            if(activity.date === calendarDays[i]){
+                location = activity.location;
+                time = activity.time;
+                description = activity.description;
+            }
+        }
+        return (
+            <span className="activity" key={index}>
+                <div className="desc">{description}</div>
+                <div className="time">{time}</div>
+                <div className="location">{location}</div>
+            </span>
+        )
+    }
+
+    // renders the date boxes of the calendar
+    renderCells(){
+        const format = "ddd MMM DD YYYY";
+        const { currentMonth, selectedDate } = this.state;
+        const monthStart = dateFns.startOfMonth(currentMonth);
+        const monthEnd = dateFns.endOfMonth(monthStart);
+        const startDate = dateFns.startOfWeek(monthStart);
+        const endDate = dateFns.endOfWeek(monthEnd);
+
+        const events = this.formatEvents();
         
         const dateFormat = "D";
         const rows = [];
@@ -58,7 +111,7 @@ class Calendar extends React.Component {
         let days = [];
         let day = startDate;
         let formattedDate = "";
-
+        
         while(day <= endDate){
             for(let i = 0; i < 7; i++){
                 formattedDate = dateFns.format(day, dateFormat);
@@ -75,10 +128,17 @@ class Calendar extends React.Component {
                     >
                         <span className="number">{formattedDate}</span>
                         <span className="bg">{formattedDate}</span>
+                        {events.map((event, index)=> {
+                            if(dateFns.format(cloneDay.toString(), format) === event.date){
+                                return this.renderActivity(event, index)
+                            }
+                            return ""
+                        })}
                     </div>
                 );
                 day = dateFns.addDays(day, 1);
             }
+            
             rows.push(
                 <div className="row" key={day}>
                     {days}
@@ -88,6 +148,7 @@ class Calendar extends React.Component {
         }
         return <div className="body">{rows}</div>;
     }
+
 
     onDateClick = day => {
         this.setState({
@@ -111,7 +172,6 @@ class Calendar extends React.Component {
     };
 
     render(){
-        // console.log("props:", this.props)
         return (
             <div className="calendar">
                 {this.renderHeader()}
