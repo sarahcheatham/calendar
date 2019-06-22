@@ -22,6 +22,8 @@ import fakeData from './api/calendar.json';
   }
 
   componentDidMount(){
+    this.props.loadUsers();
+    this.props.loadPosts();
     // fetch('http://localhost:3000/api/users')
     // .then(response => response.json())
     // .then(users => this.setState({ users }))
@@ -43,7 +45,7 @@ import fakeData from './api/calendar.json';
     return (
       <div className="App">
         <Header users={this.state.users} fakeData={this.state.fakeData}/>
-        <Calendar fakeData={this.state.fakeData} onDateSelect={this.selectDate}/>
+        <Calendar posts={this.props.posts.posts} fakeData={this.state.fakeData} onDateSelect={this.selectDate}/>
         <Form date={this.state.selectedDate}/>
       </div>
     );

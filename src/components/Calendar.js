@@ -5,16 +5,8 @@ class Calendar extends React.Component {
     state = {
         currentMonth: new Date(),
         selectedDate: new Date(),
-        events: [],
-        posts: []
+        events: []
     };
-
-    componentDidMount(){
-        fetch('http://localhost:3000/api/calendar')
-        .then(res => res.json())
-        .then(posts => this.setState({ posts }))
-        .catch(error => console.log(error))
-    }
 
     renderHeader(){
         const dateFormat = "MMMM YYYY";
@@ -54,7 +46,7 @@ class Calendar extends React.Component {
 
     formatEvents(){
         const format = "ddd MMM DD YYYY";
-        const events = this.props.fakeData.map(item => {
+        const events = this.props.posts.posts.map(item => {
             const date = dateFns.format(item.date, format)
             const id = item.id;
             const location = item.location;
@@ -62,6 +54,14 @@ class Calendar extends React.Component {
             const description = item.description
             return {id, date, time, location, description}
         });
+        // const events = this.props.fakeData.map(item => {
+        //     const date = dateFns.format(item.date, format)
+        //     const id = item.id;
+        //     const location = item.location;
+        //     const time = item.time;
+        //     const description = item.description
+        //     return {id, date, time, location, description}
+        // });
         return events
     }
 
@@ -180,7 +180,6 @@ class Calendar extends React.Component {
     };
 
     render(){
-        console.log("POSTS:", this.state.posts)
         return (
             <div className="calendar">
                 {this.renderHeader()}
