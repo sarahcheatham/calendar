@@ -5,8 +5,16 @@ class Calendar extends React.Component {
     state = {
         currentMonth: new Date(),
         selectedDate: new Date(),
-        events: []
+        events: [],
+        posts: []
     };
+
+    componentDidMount(){
+        fetch('http://localhost:3000/api/calendar')
+        .then(res => res.json())
+        .then(posts => this.setState({ posts }))
+        .catch(error => console.log(error))
+    }
 
     renderHeader(){
         const dateFormat = "MMMM YYYY";
@@ -172,6 +180,7 @@ class Calendar extends React.Component {
     };
 
     render(){
+        console.log("POSTS:", this.state.posts)
         return (
             <div className="calendar">
                 {this.renderHeader()}
