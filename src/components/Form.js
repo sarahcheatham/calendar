@@ -1,16 +1,16 @@
 import React from 'react';
-// import Validation from 'react-validation';
+import { connect } from 'react-redux';
+import { loadPosts, createPost } from '../store/actions';
 import FormHeader from './FormHeader';
-// import dateFns from 'date-fns';
 
 class Form extends React.Component{
     state = {
-        userId: "",
-        date: new Date(),
+        posts: [],
+        date: "",
         time: "",
         location: "",
         desc: "",
-        show: false
+        show: false,
     }
 
     handleFormChange = e => {
@@ -23,12 +23,15 @@ class Form extends React.Component{
 
     handleFormSubmit = e => {
         e.preventDefault();
-        const data = {
-            date: this.props.date,
-            time: this.state.time,
-            location: this.state.location,
-            desc: this.state.desc
-        }
+        
+        const id = this.props.posts.posts.posts.length + 1;
+        const date = this.props.date;
+        const time = this.state.time;
+        const location = this.state.location;
+        const description = this.state.desc;
+        const userId = 1;
+
+        this.props.createPost({ id, date, time, location, description, userId })
     }
 
     renderForm(){
@@ -36,7 +39,7 @@ class Form extends React.Component{
             <form id="form" onSubmit={this.handleFormSubmit}>
                     <label>
                         Date:
-                        <input className="formInput" type="text" name="date" value={this.props.date}/>
+                        <input className="formInput" type="text" name="date" value={this.props.date} onChange={this.handleFormChange} placeholder={new Date()}/>
                     </label>
                     <label>
                         Time:
@@ -50,7 +53,7 @@ class Form extends React.Component{
                         Description:
                         <input className="formInput" type="text" name="desc" onChange={this.handleFormChange} />
                     </label>
-                    <input id="formSubmit" type="submit" value="Submit" />
+                    <button id="formSubmit" type="submit" value="Submit">Submit</button>
                 </form>
         )
     }
@@ -65,4 +68,21 @@ class Form extends React.Component{
     }
 }
 
-export default Form;
+const mapStateToProps = state => {
+    return {
+        posts: {
+            loading: state.loading,
+            error: state.error,
+            posts: state.posts
+        }
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        loadPosts: () => dispatch(loadPosts()),
+        createPost: newPost => dispatch(createPost(newPost))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps) (Form);

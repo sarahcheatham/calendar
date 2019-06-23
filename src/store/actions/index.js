@@ -38,24 +38,7 @@ export const loadUsers = () => {
             .catch(error => dispatch(fetchUsersFailure(error)))
     };
 }
-    
 
-// export const loadUserId = () => {
-//     return dispatch => {
-//         fetch("http://localhost:3000/api/users")
-//         .then(res => res.json())
-//         .then(userId => {
-//             dispatch(setUserId(userId));
-//         });
-//     };
-// }
-
-// export const setUserId = userId => {
-//     return {
-//         type: "SET_USER_ID",
-//         value: userId
-//     }
-// }
 
 //posts fetch
 
@@ -91,7 +74,9 @@ export const loadPosts = () => {
     };
 }
 
+
 export const createPost = newPost => {
+    console.log("ACTIONS:", newPost)
     return dispatch => {
         fetch('http://localhost:3000/api/calendar', {
             method: "POST",

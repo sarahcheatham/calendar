@@ -6,15 +6,8 @@ import {
     FETCH_USERS_FAILURE,
     FETCH_POSTS_BEGIN,
     FETCH_POSTS_SUCCESS,
-    FETCH_POSTS_FAILURE
+    FETCH_POSTS_FAILURE,
 } from '../actions';
-
-// const userId = (state = "", action) => {
-//     if(action.type === "SET_USER_ID"){
-//         return action.value
-//     }
-//     return state;
-// }
 
 const users = (state = storeState, action) => {
     switch(action.type){
@@ -62,10 +55,16 @@ const posts = (state = storeState, action) => {
                 error: action.payload.error,
                 posts: []
             };
+        // case ADD_POST:
+        //     return {
+        //         ...state,
+        //         posts: state.posts.push(action.payload.newPost)
+        //     };
         default: 
             return state;
     }
 }
+
 
 const rootReducer = combineReducers({
     users, posts
