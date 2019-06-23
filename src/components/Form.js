@@ -22,16 +22,35 @@ class Form extends React.Component{
 
     handleFormSubmit = e => {
         e.preventDefault();
-        const newPost = {
-            id: this.props.posts.posts.posts.length + 1,
-            date: this.props.date,
-            time: this.state.time,
-            location: this.state.location,
-            desc: this.state.desc,
-            userId: 1
+        // const newPost = {
+        //     id: this.props.posts.posts.posts.length + 1,
+        //     date: this.props.date,
+        //     time: this.state.time,
+        //     location: this.state.location,
+        //     desc: this.state.desc,
+        //     userId: 1
+        // }
+        const id = this.props.posts.posts.posts.length + 1;
+        const date = this.props.date;
+        const time = this.state.time;
+        const location = this.state.location;
+        const description = this.state.desc;
+        const userId = 1;
+      
+        let options = {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({ id, date, time, location, description, userId })
         }
-        console.log("newPost:", newPost)
-        this.props.createPost(newPost)
+        fetch('http://localhost:3000/api/calendar', options).then((res)=>{
+            return res.json()
+        }).then((res)=>{
+            console.log(res)
+        }).catch((err)=>{
+            console.log(err)
+        })
+        this.props.loadPosts()
+        // this.props.createPost(newPost)
     }
 
     renderForm(){
