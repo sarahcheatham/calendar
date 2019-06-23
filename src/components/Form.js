@@ -5,8 +5,7 @@ import FormHeader from './FormHeader';
 
 class Form extends React.Component{
     state = {
-        userId: "",
-        date: new Date(),
+        date: "",
         time: "",
         location: "",
         desc: "",
@@ -23,12 +22,16 @@ class Form extends React.Component{
 
     handleFormSubmit = e => {
         e.preventDefault();
-        const data = {
+        const newPost = {
+            id: this.props.posts.posts.posts.length + 1,
             date: this.props.date,
             time: this.state.time,
             location: this.state.location,
-            desc: this.state.desc
+            desc: this.state.desc,
+            userId: 1
         }
+        console.log("newPost:", newPost)
+        this.props.createPost(newPost)
     }
 
     renderForm(){
@@ -36,7 +39,7 @@ class Form extends React.Component{
             <form id="form" onSubmit={this.handleFormSubmit}>
                     <label>
                         Date:
-                        <input className="formInput" type="text" name="date" value={this.props.date}/>
+                        <input className="formInput" type="text" name="date" value={this.props.date} onChange={this.handleFormChange} placeholder={new Date()}/>
                     </label>
                     <label>
                         Time:
@@ -50,7 +53,7 @@ class Form extends React.Component{
                         Description:
                         <input className="formInput" type="text" name="desc" onChange={this.handleFormChange} />
                     </label>
-                    <input id="formSubmit" type="submit" value="Submit" />
+                    <button id="formSubmit" type="submit" value="Submit"/>
                 </form>
         )
     }

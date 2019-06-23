@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Header from './components/Header';
 import Calendar from './components/Calendar';
-import Form from './components/Form';
+import FormContainer from './containers/FormContainer';
 import fakeData from './api/calendar.json';
 
  class App extends Component {
@@ -14,30 +14,17 @@ import fakeData from './api/calendar.json';
       fakeData: [],
       selectedDate: ""
     }
-    //uncomment when working with SQL database
-    // fetch('/api/users')
-    // .then(response => response.json())
-    // .then(users => this.setState({users: users.users}))
-    // .catch(error => console.log(error));
   }
 
   componentDidMount(){
+    //uncomment when working with SQL database
     this.props.loadUsers();
     this.props.loadPosts();
-    // fetch('http://localhost:3000/api/users')
-    // .then(response => response.json())
-    // .then(users => this.setState({ users }))
-    // .catch(error => console.log(error));
-
-    // fetch('http://localhost:3000/api/calendar')
-    // .then(response => response.json())
-    // .then(posts => this.setState({ posts }))
-    // .catch(error => console.log(error));
-
     this.setState({ fakeData })
   }
 
   selectDate = date => {
+    console.log("date:", date)
     this.setState({selectedDate: date.selectedDate})
   }
   
@@ -46,7 +33,7 @@ import fakeData from './api/calendar.json';
       <div className="App">
         <Header users={this.state.users} fakeData={this.state.fakeData}/>
         <Calendar posts={this.props.posts.posts} fakeData={this.state.fakeData} onDateSelect={this.selectDate}/>
-        <Form date={this.state.selectedDate}/>
+        <FormContainer onChange={this.selectDate} date={this.state.selectedDate}/>
       </div>
     );
   }
