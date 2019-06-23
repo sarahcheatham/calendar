@@ -54,6 +54,7 @@ class Calendar extends React.Component {
             const description = item.description
             return {id, date, time, location, description}
         });
+        // uncomment when not connected to database
         // const events = this.props.fakeData.map(item => {
         //     const date = dateFns.format(item.date, format)
         //     const id = item.id;
