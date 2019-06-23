@@ -75,13 +75,17 @@ body {
   background: var(--neutral-color);
   position: relative;
 }
-
+#calendar-header{
+  /* background-color: var(--sweet-corn) */
+  /* background-color: var(--tumeric); */
+  background-color: #FCD1C8;
+}
 header {
   display: block;
   width: 100%;
   padding: 3% 0% 2% 0%;
   /* padding: 2% 0%; */
-  border-bottom: 1px solid var(--border-color);
+  /* border-bottom: 1px solid var(--border-color); */
   background: var(--neutral-color);
   color: var(--navy);
   font-family: proxima-nova, sans-serif;
@@ -93,13 +97,22 @@ header {
 #user-calendar-header {
   grid-column: 1 / 2;
   font-size: 175%;
-  color: var(--black-color);
+  /* color: var(--black-color); */
+  /* color: var(--warm-white); */
+  color: var(--eclipse);
   line-height: 1;
   margin-bottom: 0%;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100%;
+  /* background: var(--eclipse); */
+  background: var(--warm-white);
+}
+
+#empty-span{
+  grid-column: 2 / 3;
+  background: var(--eclipse);
 }
 
 #user-calendar-header .icon {
@@ -156,10 +169,15 @@ main {
   display: block;
   position: relative;
   width: 100%;
-  background: #F9F9BB;
+  /* background: var(--eclipse); */
+  background: var(--warm-white);
+  /* background: var(--neutral-color); */
+  /* background: #F9F9BB; */
   /* background: #FCD1C8; */
   /* background: var(--pink-color); */
   grid-column: 1 / 2;
+  padding-left: 2%;
+  padding-right: 2%;
 }
 
 /* changes the month year at the top of the calendar */
@@ -284,7 +302,9 @@ main {
   grid-column: 2 / 3;
   padding-left: 5%;
   padding-right: 5%;
-  background: var(--warm-white);
+  /* background: var(--warm-white); */
+  background: var(--eclipse);
+  color: var(--warm-white);
 }
 
 #form{

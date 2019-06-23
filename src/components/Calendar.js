@@ -11,7 +11,7 @@ class Calendar extends React.Component {
     renderHeader(){
         const dateFormat = "MMMM YYYY";
         return (
-            <div className="header row flex-middle">
+            <div className="header row flex-middle" id="calendar-header">
                 <div className="col col-start">
                     <div className="icon" onClick={this.prevMonth}>chevron_left</div>
                 </div>
@@ -46,16 +46,8 @@ class Calendar extends React.Component {
 
     formatEvents(){
         const format = "ddd MMM DD YYYY";
-        const events = this.props.posts.posts.map(item => {
-            const date = dateFns.format(item.date, format)
-            const id = item.id;
-            const location = item.location;
-            const time = item.time;
-            const description = item.description
-            return {id, date, time, location, description}
-        });
-        // uncomment when not connected to database
-        // const events = this.props.fakeData.map(item => {
+        // uncomment when connected to the database
+        // const events = this.props.posts.posts.map(item => {
         //     const date = dateFns.format(item.date, format)
         //     const id = item.id;
         //     const location = item.location;
@@ -63,6 +55,15 @@ class Calendar extends React.Component {
         //     const description = item.description
         //     return {id, date, time, location, description}
         // });
+        // uncomment when not connected to database
+        const events = this.props.fakeData.map(item => {
+            const date = dateFns.format(item.date, format)
+            const id = item.id;
+            const location = item.location;
+            const time = item.time;
+            const description = item.description
+            return {id, date, time, location, description}
+        });
         return events
     }
 
