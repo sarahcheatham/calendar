@@ -1,5 +1,5 @@
 import React from 'react';
-// import { connect } from 'react-redux';
+import { connect } from 'react-redux';
 import { loadPosts, createPost } from '../store/actions';
 import FormHeader from './FormHeader';
 
@@ -31,7 +31,7 @@ class Form extends React.Component{
         const description = this.state.desc;
         const userId = 1;
 
-        // this.props.createPost({ id, date, time, location, description, userId })
+        this.props.createPost({ id, date, time, location, description, userId })
     }
 
     renderForm(){
@@ -85,5 +85,5 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-// export default connect(mapStateToProps, mapDispatchToProps) (Form);
-export default Form;
+export default connect(mapStateToProps, mapDispatchToProps) (Form);
+// export default Form;
