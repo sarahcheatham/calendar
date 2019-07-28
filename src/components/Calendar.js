@@ -47,16 +47,7 @@ class Calendar extends React.Component {
     formatEvents(){
         const format = "ddd MMM DD YYYY";
         // uncomment when connected to the database
-        // const events = this.props.posts.posts.map(item => {
-        //     const date = dateFns.format(item.date, format)
-        //     const id = item.id;
-        //     const location = item.location;
-        //     const time = item.time;
-        //     const description = item.description
-        //     return {id, date, time, location, description}
-        // });
-        // uncomment when not connected to database
-        const events = this.props.fakeData.map(item => {
+        const events = this.props.posts.posts.map(item => {
             const date = dateFns.format(item.date, format)
             const id = item.id;
             const location = item.location;
@@ -64,6 +55,15 @@ class Calendar extends React.Component {
             const description = item.description
             return {id, date, time, location, description}
         });
+        // uncomment when not connected to database
+        // const events = this.props.fakeData.map(item => {
+        //     const date = dateFns.format(item.date, format)
+        //     const id = item.id;
+        //     const location = item.location;
+        //     const time = item.time;
+        //     const description = item.description
+        //     return {id, date, time, location, description}
+        // });
         return events
     }
 

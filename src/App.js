@@ -18,8 +18,8 @@ import fakeData from './api/calendar.json';
 
   componentDidMount(){
     //uncomment when working with SQL database
-    // this.props.loadUsers();
-    // this.props.loadPosts();
+    this.props.loadUsers();
+    this.props.loadPosts();
     this.setState({ fakeData })
   }
 
@@ -33,8 +33,8 @@ import fakeData from './api/calendar.json';
       <div className="App">
         <Header users={this.state.users} fakeData={this.state.fakeData}/>
         <span id="empty-span"></span>
-        {/* <Calendar posts={this.props.posts.posts} onDateSelect={this.selectDate}/> */}
-        <Calendar fakeData={this.state.fakeData} onDateSelect={this.selectDate}/>
+        <Calendar posts={this.props.posts.posts} onDateSelect={this.selectDate}/>
+        {/* <Calendar fakeData={this.state.fakeData} onDateSelect={this.selectDate}/> */}
         <Form onChange={this.selectDate} date={this.state.selectedDate}/>
       </div>
     );
